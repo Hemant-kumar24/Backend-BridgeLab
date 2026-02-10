@@ -1,37 +1,41 @@
 import fs from 'fs';
 
-import http from 'http';
-import { json } from 'stream/consumers';
-
-const server=http.createServer((req,res)=>{
-    const url=new URL(req.url,`http://${req.headers.host}`);
-    if(url.pathname=='/'){
-        res.end('hello world');
-    
+// fs.mkdir("new_directory/folder1",(err)=>{
+//     if(err){
+//         console.log(err);
+//         return;
+//     }
+//     else{
+//         console.log("folder created");
+//     }
+// });
+// fs.mkdir("folder/folder1/folder2",{recursive:true},(err)=>{
+//     if(err){
+//         console.log(err);
+//         return;
+//     }
+//     else{
+//         console.log("folder created");
+//     }
+// }
+// )
+// fs.readdir("folder",(err,files)=>{
+//     if(err){
+//         console.log(err);
+//         return;
+//     }
+//     else{
+//         console.log(files);
+//     }
+//     })
+fs.rmdir("folder",{recursive:true},(err)=>{
+    if(err){
+        console.log(err);
+        return;
     }
-    if(url.pathname=='/complain'){
-        const name=url.searchParams.get('name');
-        const issue=url.searchParams.get('issue');
-        const priority=url.searchParams.get('priority');
-        const id=Math.floor(Math.random()*100);
-        if(priority=="high"){
-            fs.appendFile("urgent.txt",`${id}       ${name}     ${issue}\n`,function(err){
-                if(err){
-                    console.log(err);
-                }
-            });
-        }
-        else{
-            fs.appendFile("normal.txt",`${id}       ${name}     ${issue}\n`,function(err){
-                if(err){
-                    console.log(err);
-                }
-            });
-        }
-
-        res.end(JSON.stringify({id:id,message:"We will solve your issue soon."}));
+    else{
+        console.log("folder deleted");
     }
 })
-server.listen(8000);
 
 
