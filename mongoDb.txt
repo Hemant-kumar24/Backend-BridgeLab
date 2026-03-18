@@ -1,0 +1,286 @@
+se college
+switched to db college
+show collections
+Employee
+student
+db.student.find()
+{
+  _id: ObjectId('69b51ccf9c6c326e6210d7e4'),
+  name: 'hemant',
+  age: 21
+}
+{
+  _id: ObjectId('69b51ccf9c6c326e6210d7e5')
+}
+{
+  _id: ObjectId('69b51e509c6c326e6210d7e6'),
+  name: 'Bhavtosh',
+  age: 23
+}
+{
+  _id: ObjectId('69b51e509c6c326e6210d7e7'),
+  name: 'Sumit',
+  age: 21
+}
+{
+  _id: ObjectId('69b51e509c6c326e6210d7e8'),
+  name: 'kunal',
+  age: 21
+}
+{
+  _id: ObjectId('69b51e509c6c326e6210d7e9')
+}
+{
+  _id: ObjectId('69b92d830eaf383b3b0d55f2'),
+  name: 'hemant',
+  age: 34
+}
+{
+  _id: ObjectId('69b92d830eaf383b3b0d55f3'),
+  name: 'kalpana',
+  age: 45
+}
+{
+  _id: ObjectId('69b92d830eaf383b3b0d55f4'),
+  name: 'kartik',
+  age: 20
+}
+{
+  _id: ObjectId('69b92d830eaf383b3b0d55f5')
+}
+{
+  _id: '01',
+  name: 'hemant'
+}
+{
+  _id: ObjectId('69b937a674daa3dcfd7c2907'),
+  name: 'Hemant',
+  age: 23
+}
+db.student.updateOne({name:"hemant"},{branch:"CSE"})
+MongoInvalidArgumentError: Update document requires atomic operators
+db.student.updateOne({name:"hemant"},{$set:{branch:"CSE"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.student.updateMany({name:"Hemant"},{$set:{branch:"CSE"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+ 
+ db.student.updateOne({name:"deepika"},{$set:{age:24,branch:"EC"}},{upsert:true})
+{
+  acknowledged: true,
+  insertedId: ObjectId('69ba6c0c67cc82e3106ebe98'),
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 1
+}
+db.student.find({age:{$gt:20}})
+{
+  _id: ObjectId('69b51ccf9c6c326e6210d7e4'),
+  name: 'hemant',
+  age: 21,
+  branch: 'CSE'
+}
+{
+  _id: ObjectId('69b51e509c6c326e6210d7e6'),
+  name: 'Bhavtosh',
+  age: 23
+}
+{
+  _id: ObjectId('69b51e509c6c326e6210d7e7'),
+  name: 'Sumit',
+  age: 21
+}
+{
+  _id: ObjectId('69b51e509c6c326e6210d7e8'),
+  name: 'kunal',
+  age: 21
+}
+{
+  _id: ObjectId('69b92d830eaf383b3b0d55f2'),
+  name: 'hemant',
+  age: 34
+}
+{
+  _id: ObjectId('69b92d830eaf383b3b0d55f3'),
+  name: 'kalpana',
+  age: 45
+}
+{
+  _id: ObjectId('69b937a674daa3dcfd7c2907'),
+  name: 'Hemant',
+  age: 23,
+  branch: 'CSE'
+}
+{
+  _id: ObjectId('69ba6c0c67cc82e3106ebe98'),
+  name: 'deepika',
+  age: 24,
+  branch: 'EC'
+}
+db.student.inserMany([{name:"hemant",age:21,course:"b.tech",city:"mathura",feespaid:"true"},{name:"bhavtosh",age:21,course:"bca",city:"agra",feespaid:"true"},{name:"anushka",age:21,course:"mba",city:"luckhnow",feespaid:"false"},{name:"nidhi",age:20,course:"bca",city:"jaipur",feespaid:"false"}])
+TypeError: db.student.inserMany is not a function
+db.student.insertMany([{name:"hemant",age:21,course:"b.tech",city:"mathura",feespaid:"true"},{name:"bhavtosh",age:21,course:"bca",city:"agra",feespaid:"true"},{name:"anushka",age:21,course:"mba",city:"luckhnow",feespaid:"false"},{name:"nidhi",age:20,course:"bca",city:"jaipur",feespaid:"false"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('69ba76aa8e912f02eb3789af'),
+    '1': ObjectId('69ba76aa8e912f02eb3789b0'),
+    '2': ObjectId('69ba76aa8e912f02eb3789b1'),
+    '3': ObjectId('69ba76aa8e912f02eb3789b2')
+  }
+}
+db.student.insertOne({name:"hemant",age:25,course:"mca",city:"hathras",feespaid:"false"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('69ba771a8e912f02eb3789b3')
+}
+db.student.find({course:"bca"})
+{
+  _id: ObjectId('69ba76aa8e912f02eb3789b0'),
+  name: 'bhavtosh',
+  age: 21,
+  course: 'bca',
+  city: 'agra',
+  feespaid: 'true'
+}
+{
+  _id: ObjectId('69ba76aa8e912f02eb3789b2'),
+  name: 'nidhi',
+  age: 20,
+  course: 'bca',
+  city: 'jaipur',
+  feespaid: 'false'
+}
+db.student.find({age:{$gt:20}})
+{
+  _id: ObjectId('69ba76aa8e912f02eb3789af'),
+  name: 'hemant',
+  age: 21,
+  course: 'b.tech',
+  city: 'mathura',
+  feespaid: 'true'
+}
+{
+  _id: ObjectId('69ba76aa8e912f02eb3789b0'),
+  name: 'bhavtosh',
+  age: 21,
+  course: 'bca',
+  city: 'agra',
+  feespaid: 'true'
+}
+{
+  _id: ObjectId('69ba76aa8e912f02eb3789b1'),
+  name: 'anushka',
+  age: 21,
+  course: 'mba',
+  city: 'luckhnow',
+  feespaid: 'false'
+}
+{
+  _id: ObjectId('69ba771a8e912f02eb3789b3'),
+  name: 'hemant',
+  age: 25,
+  course: 'mca',
+  city: 'hathras',
+  feespaid: 'false'
+}
+db.student.updateOne({name:"anushka"},{$set:{city:"agra"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.student.updateMany({course:"bca"},{$set:{course:"mca"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+db.student.find({name:1,course:1})
+db.student.find({},{name:1})
+{
+  _id: ObjectId('69ba76aa8e912f02eb3789af'),
+  name: 'hemant'
+}
+{
+  _id: ObjectId('69ba76aa8e912f02eb3789b0'),
+  name: 'bhavtosh'
+}
+{
+  _id: ObjectId('69ba76aa8e912f02eb3789b1'),
+  name: 'anushka'
+}
+{
+  _id: ObjectId('69ba76aa8e912f02eb3789b2'),
+  name: 'nidhi'
+}
+{
+  _id: ObjectId('69ba771a8e912f02eb3789b3'),
+  name: 'hemant'
+}
+db.student.find({},{name:1,course:1})
+{
+  _id: ObjectId('69ba76aa8e912f02eb3789af'),
+  name: 'hemant',
+  course: 'b.tech'
+}
+{
+  _id: ObjectId('69ba76aa8e912f02eb3789b0'),
+  name: 'bhavtosh',
+  course: 'mca'
+}
+{
+  _id: ObjectId('69ba76aa8e912f02eb3789b1'),
+  name: 'anushka',
+  course: 'mba'
+}
+{
+  _id: ObjectId('69ba76aa8e912f02eb3789b2'),
+  name: 'nidhi',
+  course: 'mca'
+}
+{
+  _id: ObjectId('69ba771a8e912f02eb3789b3'),
+  name: 'hemant',
+  course: 'mca'
+}
+db.student.updateMany({age:{$gt:24}},{feespaid:"true"})
+MongoInvalidArgumentError: Update document requires atomic operators
+db.student.updateMany({age:{$gt:24}},{$set:{feespaid:"true"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.deleteMany({age:{$lt:21}})
+TypeError: db.deleteMany is not a function
+db.student.deleteMany({age:{$lt:21}})
+{
+  acknowledged: true,
+  deletedCount: 1
+}
+db.student.deleteMany({feespaid:"false"})
+{
+  acknowledged: true,
+  deletedCount: 1
+}
+college
+
+
